@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OBS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,8 @@ namespace obs_client
 
         private void confirm_btn_Click(object sender, EventArgs e)
         {
-            if (this.username.Text.ToString() == "admin" && this.password.Text.ToString() == "admin") {
+            var configDict = ObsXml.ReadXml();
+            if (this.username.Text.ToString() == configDict["Username"] && this.password.Text.ToString() == configDict["Password"]) {
                 this.DialogResult = DialogResult.OK;
             }
             else {
